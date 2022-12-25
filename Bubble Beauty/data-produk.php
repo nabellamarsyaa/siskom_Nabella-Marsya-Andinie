@@ -37,7 +37,6 @@
                     <thead>
                         <tr>
                             <th width="60px">No</th>
-                            <th>Category</th>
                             <th>Product</th>
                             <th>Price</th>
                             <th>Description</th>
@@ -48,15 +47,14 @@
                     <tbody>
                         <?php
                             $no = 1;
-                            $product = mysqli_query($conn, "SELECT * FROM tb_product LEFT JOIN tb_category USING (category_id) ORDER BY product_id DESC");
+                            $product = mysqli_query($conn, "SELECT * FROM tb_product ORDER BY product_id DESC");
                             if(mysqli_num_rows($product) > 0){
                             while($row = mysqli_fetch_array($product)){
                         ?>
                         <tr>
                             <td><?php echo $no++ ?></td>
-                            <td><?php echo $row['category_name'] ?></td>
                             <td><?php echo $row['product_name'] ?></td>
-                            <td><?php echo $row['product_price'] ?></td>
+                            <td>Rp. <?php echo number_format($row['product_price']) ?></td>
                             <td><?php echo $row['product_description'] ?></td>
                             <td><img src="product/<?php echo $row['product_image'] ?>" width="200px"></td>
                             <td>

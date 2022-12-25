@@ -11,6 +11,7 @@
     <title>Bubble Beauty</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 </head>
 <body>
     <!--header-->
@@ -46,7 +47,7 @@
                     <input type="text" name="name" class="input-control" placeholder="Name Product" required>  
                     <input type="text" name="price" class="input-control" placeholder="Price" required> 
                     <input type="file" name="image" class="input-control" required>
-                    <textarea class="input-control" name="description" placeholder="Description"></textarea>
+                    <textarea class="input-control" name="description" placeholder="Description"></textarea><br>
                     <input type="submit" name="submit" value="Submit" class="btn">
                 </form>
                 <?php
@@ -92,7 +93,8 @@
                                             ) ");
 
                             if($insert){
-                                echo 'add product successfully';
+                                echo '<script>alert("Add Data Successfully")</script>';
+                                echo '<script>window.location="data-produk.php"</script>';
                             }else{
                                 echo 'add product failed'.mysqli_error($conn);
                             }
@@ -113,5 +115,8 @@
             <small>Copyright &copy; 2022 - Bubble Beauty.</small>
         </div>
     </footer>
+    <script>
+        CKEDITOR.replace( 'description' );
+    </script>
 </body>
 </html>
