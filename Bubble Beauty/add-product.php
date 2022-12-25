@@ -66,7 +66,7 @@
                         $type1 = explode('.', $filename);
                         $type2 = $type1[1];
 
-                        $newname = 'product'.time().'.'.'$type2';
+                        $newname = 'product'.time().'.'.$type2;
 
                         // menampung data format file yang diizinkan
                         $type_diizinkan = array('jpg', 'jpeg', 'png');
@@ -80,6 +80,22 @@
                             // jika format file diizinkan
                             // proses upload file dan insert ke database
                             move_uploaded_file($tmp_name, './product/'.$newname);
+
+                            $insert = mysqli_query($conn, "INSERT INTO tb_product VALUES(
+                                        null,
+                                        '".$category."',
+                                        '".$name."',
+                                        '".$price."',
+                                        '".$description."',
+                                        '".$newname."',
+                                        null
+                                            ) ");
+
+                            if($insert){
+                                echo 'add product successfully';
+                            }else{
+                                echo 'add product failed'.mysqli_error($conn);
+                            }
 
                         }
                         

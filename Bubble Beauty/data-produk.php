@@ -48,7 +48,7 @@
                     <tbody>
                         <?php
                             $no = 1;
-                            $product = mysqli_query($conn, "SELECT * FROM tb_product ORDER BY product_id DESC");
+                            $product = mysqli_query($conn, "SELECT * FROM tb_product LEFT JOIN tb_category USING (category_id) ORDER BY product_id DESC");
                             if(mysqli_num_rows($product) > 0){
                             while($row = mysqli_fetch_array($product)){
                         ?>
@@ -58,7 +58,7 @@
                             <td><?php echo $row['product_name'] ?></td>
                             <td><?php echo $row['product_price'] ?></td>
                             <td><?php echo $row['product_description'] ?></td>
-                            <td><img src="product/<?php echo $row['product_image'] ?>" ></td>
+                            <td><img src="product/<?php echo $row['product_image'] ?>" width="200px"></td>
                             <td>
                                 <a href="edit-produk.php?id=<?php echo $row['product_id'] ?>">Edit</a> || <a href="proses-hapus.php?idp=<?php echo $row['product_id'] ?>" onclick="return confirm('Are you sure to delete?')">Delete</a>
                             </td>
