@@ -86,7 +86,6 @@
                                 echo '<script>alert("File formats are not allowed")</script>';
 
                             }else{
-
                                 move_uploaded_file($tmp_name, './product/'.$newname);
                                 $nameimage = $newname;
                             }
@@ -103,14 +102,15 @@
                                                 product_name = '".$name."',
                                                 product_price = '".$price."',
                                                 product_description = '".$description."',
-                                                product_image = '".$nameimage."',
+                                                product_image = '".$nameimage."'
                                                 WHERE product_id = '".$p->product_id."' ");
-                        if(update){
+                        if($update){
                            echo '<script>alert("Edit Data Successfully")</script>';
                            echo '<script>window.location="data-produk.php"</script>';
                         }else{
                            echo 'gagal '.mysqli_error($conn);
                         }
+
                     }
                 ?>
             </div>
@@ -120,7 +120,8 @@
     <!--footer-->
     <footer>
         <div class="container">
-            <small>Copyright &copy; 2022 - Bubble Beauty.</small>
+            <small>Copy
+                ight &copy; 2022 - Bubble Beauty.</small>
         </div>
     </footer>
     <script>
